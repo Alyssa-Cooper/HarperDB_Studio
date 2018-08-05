@@ -62,7 +62,6 @@ router.get("/sql_search_edit/:livelinkId", isAuthenticated, function(req, res) {
   favorite
     .getLivelinkById(req, req.params.livelinkId)
     .then(resObj => {
-      // I do not like nested async calls like this. consider using async/await instead.
       hdb_callout
         .callHarperDB(call_object, operation)
         .then(result => {

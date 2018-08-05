@@ -1,7 +1,3 @@
-/* getting tired of rewriting the same comments
- * on unhandled errors. Will comment: '// UH E' 
- * to indicate unhandled error. - Ethan
- * */
 const express = require("express"),
   router = express.Router(),
   hdb_callout = require("../utility/harperDBCallout"),

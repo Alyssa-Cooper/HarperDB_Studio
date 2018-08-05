@@ -59,11 +59,10 @@ router.put("/unfavorite/:id/:isFavorited", isAuthenticated, function(req, res) {
     .catch(err => res.status(400).send(err)); // inspect err for status code
 });
 
-// example of using async/await to replace nested callHarperDB method calls
 router.get("/publis/:key", async function(req, res) {
-  var decode64 = Buffer.from(req.params.key, "base64").toString("ascii");
-  var bytes = CryptoJS.AES.decrypt(decode64, secretkey);
-  var decryptedObject = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  let decode64 = Buffer.from(req.params.key, "base64").toString("ascii");
+  let bytes = CryptoJS.AES.decrypt(decode64, secretkey);
+  let decryptedObject = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
   var call_object = {
     username: decryptedObject.un,
@@ -104,8 +103,6 @@ router.get("/publis/:key", async function(req, res) {
       });
     }
   } catch (err) {
-    // what if we have a network error?
-    // **we have to figure out better error handling**
     res.render("live_link", {
       error: err.message
     });
