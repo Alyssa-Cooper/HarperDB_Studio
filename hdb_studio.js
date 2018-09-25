@@ -103,7 +103,7 @@ passport.use(
           });
         }
 
-        if (true) {
+        if (user && user.active) {
           user.password = password;
           user.endpoint_url = req.body.endpoint_url;
           user.endpoint_port = req.body.endpoint_port;
